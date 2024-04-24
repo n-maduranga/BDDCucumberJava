@@ -1,14 +1,11 @@
-package org.orangehrm.stepDefinition;
+package stepDefinition;
 
 import ApplicationHooks.setup;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.orangehrm.pages.LoginPage;
+import pages.LoginPage;
 import org.testng.Assert;
 
 public class LoginPageStepdefs {
