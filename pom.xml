@@ -46,6 +46,13 @@
       <version>4.19.1</version>
     </dependency>
 
+    <!-- Spark Extent HTML -->
+    <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
+    <dependency>
+      <groupId>tech.grasshopper</groupId>
+      <artifactId>extentreports-cucumber7-adapter</artifactId>
+      <version>1.14.0</version>
+    </dependency>
 
   </dependencies>
   <profiles>
