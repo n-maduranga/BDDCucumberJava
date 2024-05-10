@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LoginPage {
     private WebDriver driver; //since this is private this cannot access outside of Login Page class
@@ -34,7 +36,11 @@ public class LoginPage {
         driver.findElement(txtUserName).sendKeys(username);
     }
     public void enterPassword(String pwd) {
+
+        driver.findElement(txtPassword).sendKeys(Keys.CONTROL + "a");
+        driver.findElement(txtPassword).sendKeys(Keys.DELETE);
         driver.findElement(txtPassword).sendKeys(pwd);
+        System.out.println(pwd);
     }
 
     public void clickLogin() {

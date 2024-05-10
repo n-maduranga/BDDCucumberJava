@@ -5,34 +5,25 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import pages.HomePage;
 import pages.LoginPage;
 import org.testng.Assert;
 
 public class LoginPageStepdefs {
     private WebDriver driver;
     LoginPage loginPage;
+    HomePage homePage;
 
+    //Creating LoginPageStepdefs constructor
     public LoginPageStepdefs() {
-        this.driver = setup.getDriver();
+        this.driver = setup.getDriver();//this driver is created in setup page
         this.loginPage = new LoginPage(driver);
-    }
-    //These can include in Hooks
-   // @Before
-  //  public void setup(){
-   //     System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
-       // driver = new ChromeDriver();
-    //}
+        this.homePage = new HomePage(driver);
 
-    //@After
-   // public void tearDown(){
-   //     if(driver!=null) {
-    //        driver.quit();
-     //   }
-   // }
+    }
     @Given("I am on the OrangeHRM system login Page")
     public void iAmOnTheOrangeHRMSystemLoginPage() {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        //loginPage = new LoginPage(driver);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -40,15 +31,20 @@ public class LoginPageStepdefs {
         }
     }
 
-    @Given("I have entered valid username and valid password")
+    @When("I have entered valid username and valid password")
     public void iHaveEnteredValidUsernameAndValidPassword() {
         loginPage.enterUserName("Admin");
-        loginPage.enterPassword("Admin123");
+        loginPage.enterPassword("admin123");
     }
 
     @When("I click on the login button")
     public void iClickOnTheLoginButton() {
         loginPage.clickLogin();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Then("I should be able to login succesfully")
@@ -56,6 +52,9 @@ public class LoginPageStepdefs {
         String title=driver.getTitle();
         System.out.println(title);
         //need to check dashboard header
+        String headerHomePage = homePage.printHeaderDashboard();
+        System.out.println(headerHomePage);
+
     }
 
     @Given("I have entered invalid {string} and invalid {string}")
