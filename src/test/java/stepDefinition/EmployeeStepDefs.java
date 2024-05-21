@@ -4,18 +4,23 @@ import ApplicationHooks.setup;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import pages.EmployeePage;
 import pages.HomePage;
 
 public class EmployeeStepDefs {
 
     private WebDriver driver;
     HomePage homePage;
+    EmployeePage empPage;
 
 
     //creating EmployeeStepDefs constructor
     public EmployeeStepDefs(){
-        this.driver = setup.getDriver();//need to get driver from setup class
+        //need to get driver from setup class
+        this.driver = setup.getDriver();
         this.homePage = new HomePage(driver);
+        this.empPage = new EmployeePage(driver);
     }
     @When("I click PIM link")
     public void i_click_pim_link() {
@@ -23,7 +28,9 @@ public class EmployeeStepDefs {
     }
     @Then("I can see the Employee Information page")
     public void i_can_see_the_employee_information_page() {
-
+        String ExpectedHeader = "Employee Information";
+        String ActualHeader = empPage.getEmpPageHeader();
+        Assert.assertEquals(ActualHeader,ExpectedHeader);
     }
     @When("I click +Add button")
     public void i_click_add_button() {
