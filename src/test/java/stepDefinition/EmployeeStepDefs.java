@@ -34,10 +34,13 @@ public class EmployeeStepDefs {
     }
     @When("I click +Add button")
     public void i_click_add_button() {
-
+        empPage.clickAddEmployeeButton();
     }
     @Then("I can see Add Employee page")
     public void i_can_see_add_employee_page() {
+        String ExpectedHeader = "Add Employee";
+        String ActualHeader = empPage.getAddEmpPageHeader();
+        Assert.assertEquals(ActualHeader,ExpectedHeader);
 
     }
     @When("I enter employee {string} and {string} and {string}")
