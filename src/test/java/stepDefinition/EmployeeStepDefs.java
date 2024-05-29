@@ -44,12 +44,12 @@ public class EmployeeStepDefs {
 
     }
     @When("I enter employee {string} and {string} and {string}")
-    public void i_enter_employee_and_and(String string, String string2, String string3) {
-
+    public void i_enter_employee(String FirstName, String MiddleName, String LastName) {
+        empPage.addEmployee(FirstName,MiddleName,LastName);
     }
     @When("I click Save button")
     public void i_click_save_button() {
-
+        empPage.clickEmployeeSaveButton();
     }
     @Then("I should be able to see successfully added employees")
     public void i_should_be_able_to_see_successfully_added_employees() {

@@ -43,4 +43,25 @@ public class EmployeePage {
         return driver.findElement(headerAddEmp).getText();
     }
 
+    public void addEmployee(String FName,String MidName,String LName){
+        driver.findElement(fname).sendKeys(FName);
+        driver.findElement(mname).sendKeys(MidName);
+        driver.findElement(lname).sendKeys(LName);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void clickEmployeeSaveButton(){
+        driver.findElement(btnSave).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

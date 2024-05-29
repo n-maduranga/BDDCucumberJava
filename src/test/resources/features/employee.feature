@@ -20,5 +20,5 @@ Feature: Verify employee featute
 
     Examples:
       | firstname | middlename | lastname |
-      | Kumara    | Sena       | Hemantha |
+      | Dinal     | Sena       | Test     |
 
